@@ -3,8 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Rye&display=swap");
 
-
-
 body {
     /*
     SVG background
@@ -28,7 +26,6 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
-
 
 /* Cabecera y Pie */
 
@@ -106,8 +103,6 @@ nav a:link {
     color: #a95fe6;
 } */
 
-
-
 /* Contenido */
 
 .content {
@@ -140,7 +135,6 @@ nav a:link {
     text-shadow: 0 0 10px #d0a0fa57, 0 0 20px #d0a0fa57, 0 0 30px #d0a0fa57;
 }
 
-
 .img_portada img {
     width: 100%;
     height: 60%;
@@ -148,7 +142,6 @@ nav a:link {
     margin-top: 2%;
     box-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
 }
-
 
 /* Animaciones */
 
