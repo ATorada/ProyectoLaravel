@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name', 100);
             $table->text('description');
             $table->boolean('visibility')->default(0);
-            $table->date('date');
-            $table->time('hour');
-            $table->string('location', 100);
-            $table->string('tags', 100);
+            $table->date('date')->nullable();
+            $table->time('hour')->nullable();
+            $table->string('location', 100)->nullable();
+            $table->string('tags', 100)->nullable();
             $table->timestamps();
         });
     }
