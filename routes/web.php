@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 //Resource routes "Events"
 Route::resource('events', EventController::class);
+
+//Resource routes "Messages"
+Route::resource('messages', MessageController::class);
