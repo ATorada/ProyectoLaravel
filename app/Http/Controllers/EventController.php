@@ -72,7 +72,6 @@ class EventController extends Controller
         } else {
             return redirect()->route('login');
         }
-
     }
 
     /**
