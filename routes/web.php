@@ -23,3 +23,6 @@ Route::resource('events', EventController::class);
 
 //Resource routes "Messages"
 Route::resource('messages', MessageController::class);
+
+//Resource routes "Users"
+Route::resource('users', UserController::class);
