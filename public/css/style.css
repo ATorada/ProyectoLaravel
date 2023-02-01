@@ -1,0 +1,176 @@
+/* Imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Rye&display=swap");
+
+
+
+body {
+    /*
+    SVG background
+    background-image: url("../img/fondo.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    */
+
+    background: linear-gradient(132deg, #0f0021, #422468, #3f1685);
+    background-size: 400% 400%;
+    animation: all 0s !important;
+    animation: Gradient 10s ease infinite !important;
+
+    font-family: "Archivo", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* Cabecera y Pie */
+
+nav {
+    margin-bottom: 20px;
+    padding: 20px 0;
+    text-align: center;
+    animation: blur 1s ease-in-out 1s forwards;
+    opacity: 0;
+}
+
+footer {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+footer ul,
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li,
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+footer li:hover,
+nav li:hover {
+    background: linear-gradient(to right, #dbaeff, #d096ff);
+}
+
+footer p,
+nav p {
+    margin: 0;
+}
+
+footer a,
+nav a,
+footer a:visited,
+nav a:visited,
+footer a:link,
+nav a:link {
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 0 0 10px #d0a0fa57, 0 0 20px #d0a0fa57, 0 0 30px #d0a0fa57;
+}
+
+.links {
+    margin-top: 10px;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 10px;
+    width: 200px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+/* footer a:hover, footer a:active, nav a:hover, nav a:active {
+    color: #a95fe6;
+} */
+
+
+
+/* Contenido */
+
+.content {
+    /*     background: rgba(231, 224, 235, 0.699); */
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+
+    animation: blur 1.5s ease-in-out 1s forwards;
+    opacity: 0;
+}
+
+.content h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #faf9fc;
+
+    font-family: "Rye", cursive;
+
+    text-shadow: 0 0 10px #d0a0fa57, 0 0 20px #d0a0fa57, 0 0 30px #d0a0fa57;
+}
+
+.content p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #faf9fc;
+    text-shadow: 0 0 10px #d0a0fa57, 0 0 20px #d0a0fa57, 0 0 30px #d0a0fa57;
+}
+
+
+.img_portada img {
+    width: 100%;
+    height: 60%;
+    border-radius: 20%;
+    margin-top: 2%;
+    box-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
+}
+
+
+/* Animaciones */
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(10px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
