@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/where', function () {
+    return view('where');
+})->name('where');
+
 //Resource routes "Events"
 Route::resource('events', EventController::class);
 
