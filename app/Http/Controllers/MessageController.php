@@ -50,7 +50,7 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect()->route('index');
+        return redirect()->route('messages.create')->with('success', 'Mensaje enviado correctamente');
     }
 
     /**

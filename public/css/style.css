@@ -143,6 +143,49 @@ nav a:link {
     box-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
 }
 
+form {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input,
+textarea {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"] {
+    background: linear-gradient(to right, #dbaeff, #d096ff);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(to right, #d096ff, #dbaeff);
+}
+
+input[type="submit"]:active {
+    background: linear-gradient(to right, #dbaeff, #d096ff);
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+.success {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
+    text-align: center;
+}
 /* Animaciones */
 
 @keyframes Gradient {
