@@ -143,6 +143,8 @@ nav a:link {
     box-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
 }
 
+/* Formulario */
+
 form {
     margin-top: 20px;
 
@@ -186,6 +188,15 @@ input[type="submit"]:focus {
     text-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
     text-align: center;
 }
+
+/* Iframe */
+
+iframe {
+    width: 80%;
+    border: none;
+    border-radius: 20px;
+}
+
 /* Animaciones */
 
 @keyframes Gradient {
