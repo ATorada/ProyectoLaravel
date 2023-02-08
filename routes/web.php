@@ -58,7 +58,7 @@ Route::resource('events', EventController::class);
 //Resource routes "Messages" except edit and update
 Route::resource('messages', MessageController::class)->except(['edit', 'update']);
 
-//Resource routes "Users"
-Route::resource('users', UserController::class);
+//Resource routes "Users" except create and store
+Route::resource('users', UserController::class)->except(['create', 'store']);
 
 
