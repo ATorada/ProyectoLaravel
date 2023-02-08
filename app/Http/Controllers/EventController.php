@@ -122,9 +122,10 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        $event->users()->detach();
         $event->delete();
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('success', 'Evento eliminado correctamente');
     }
 
     public function join(Event $event)
