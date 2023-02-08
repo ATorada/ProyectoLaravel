@@ -11,13 +11,13 @@
         </div>
         @auth
             @if ($event->users->contains(auth()->user()))
-                <form action="{{ route('events.leave', [$event, auth()->user()]) }}" method="POST">
+                <form action="{{ route('events.leave', ["event" => $event, "ruta" => 'show']) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="Borrarse del evento">
                 </form>
             @else
-                <form action="{{ route('events.join', $event) }}" method="POST">
+                <form action="{{ route('events.join', ["event" => $event, "ruta" => 'show']) }}" method="POST">
                     @csrf
                     <input type="submit" value="Unirse al evento">
                 </form>

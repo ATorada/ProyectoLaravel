@@ -128,21 +128,22 @@ class EventController extends Controller
         return redirect()->route('events.index')->with('success', 'Evento eliminado correctamente');
     }
 
-    public function join(Event $event)
+    public function join(Request $request, Event $event)
     {
         $event->users()->attach(auth()->user()->id);
 
-        if ($event->route == 'events.index') {
+        if ($request->get('ruta') == 'index') {
             return redirect()->route('events.index')->with('success', 'Te has unido al evento correctamente');
         } else {
             return redirect()->route('events.show', $event->id)->with('success', 'Te has unido al evento correctamente');
         }
     }
 
-    public function leave(Event $event)
+    public function leave(Request $request, Event $event)
     {
         $event->users()->detach(auth()->user()->id);
-        if ($event->route == 'events.index') {
+        
+        if ($request->get('ruta') == 'index') {
             return redirect()->route('events.index')->with('success', 'Te has salido al evento correctamente');
         } else {
             return redirect()->route('events.show', $event->id)->with('success', 'Te has salido al evento correctamente');

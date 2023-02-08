@@ -32,13 +32,13 @@
                         </form>
                     @endif
                     @if ($event->users->contains(auth()->user()))
-                        <form action="{{ route('events.leave', $event) }}" method="POST">
+                        <form action="{{ route('events.leave', ["event" => $event, "ruta" => 'index']) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Borrarse">
                         </form>
                     @else
-                        <form action="{{ route('events.join', $event) }}" method="POST">
+                        <form action="{{ route('events.join', ["event" => $event, "ruta" => 'index']) }}" method="POST">
                             @csrf
                             <input type="submit" value="Unirse">
                         </form>
