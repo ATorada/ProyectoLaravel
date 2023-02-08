@@ -14,10 +14,10 @@
             <li><a href="{{ route('messages.index') }}">Mensajes</a></li>
             @endif
             @auth
-                <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
+                <li class="logout"><a href="{{ route('logout') }}">Cerrar sesión</a></li>
             @else
-                <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
-                <li><a href="{{ route('register') }}">Registrarse</a></li>
+                <li class="user"><a  href="{{ route('login') }}">Iniciar sesión</a></li>
+                <li class="user"><a href="{{ route('register') }}">Registrarse</a></li>
             @endauth
         </ul>
     </div>
