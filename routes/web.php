@@ -55,8 +55,8 @@ Route::post('/events/{event}/join', [EventController::class, 'join'])->name('eve
 Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave');
 Route::resource('events', EventController::class);
 
-//Resource routes "Messages"
-Route::resource('messages', MessageController::class);
+//Resource routes "Messages" except edit and update
+Route::resource('messages', MessageController::class)->except(['edit', 'update']);
 
 //Resource routes "Users"
 Route::resource('users', UserController::class);
