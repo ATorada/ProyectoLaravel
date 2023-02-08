@@ -10,9 +10,23 @@
                 <ul>
             @endif
             <li>
-                <a href="{{ route('events.show', $event) }}">
-                    {{ $event->title }}
+                <a class="destacado" href="{{ route('events.show', $event) }}">
+                    {{ $event->name }}
                 </a>
+                @auth
+                    @if ($event->users->contains(auth()->user()))
+                        <form action="{{ route('events.leave', $event) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Borrarse">
+                        </form>
+                    @else
+                        <form action="{{ route('events.join', $event) }}" method="POST">
+                            @csrf
+                            <input type="submit" value="Unirse">
+                        </form>
+                    @endif
+                @endauth
             </li>
             @if ($loop->last)
                 </ul>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class EventController extends Controller
 {
@@ -40,19 +42,19 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-
         $event = new Event();
         $event->name = $request->name;
         $event->description = $request->description;
         $event->visibility = $request->visibility;
         $event->date = $request->date;
         $event->hour = $request->hour;
+        $event->location = $request->location;
 
         $event->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.show', $event->id)->with('success', 'Evento creado correctamente');
     }
 
     /**
@@ -63,7 +65,6 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-
         if (auth()->user()) {
             if ($event->visibility == 1 || auth()->user()->role == "admin") {
                 return view('events.show', compact('event'));
@@ -98,7 +99,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
 
         $event->name = $request->name;
@@ -106,10 +107,11 @@ class EventController extends Controller
         $event->visibility = $request->visibility;
         $event->date = $request->date;
         $event->hour = $request->hour;
+        $event->location = $request->location;
 
         $event->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.show', $event->id)->with('success', 'Evento actualizado correctamente');
     }
 
     /**
@@ -123,5 +125,26 @@ class EventController extends Controller
         $event->delete();
 
         return redirect()->route('events.index');
+    }
+
+    public function join(Event $event)
+    {
+        $event->users()->attach(auth()->user()->id);
+
+        if ($event->route == 'events.index') {
+            return redirect()->route('events.index')->with('success', 'Te has unido al evento correctamente');
+        } else {
+            return redirect()->route('events.show', $event->id)->with('success', 'Te has unido al evento correctamente');
+        }
+    }
+
+    public function leave(Event $event)
+    {
+        $event->users()->detach(auth()->user()->id);
+        if ($event->route == 'events.index') {
+            return redirect()->route('events.index')->with('success', 'Te has salido al evento correctamente');
+        } else {
+            return redirect()->route('events.show', $event->id)->with('success', 'Te has salido al evento correctamente');
+        }
     }
 }
