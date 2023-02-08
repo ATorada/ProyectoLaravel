@@ -14,6 +14,7 @@
             <li><a href="{{ route('messages.index') }}">Mensajes</a></li>
             @endif
             @auth
+                <li class="user"><a href="{{ route('users.show', auth()->user()) }}">Cuenta</a></li>
                 <li class="logout"><a href="{{ route('logout') }}">Cerrar sesión</a></li>
             @else
                 <li class="user"><a  href="{{ route('login') }}">Iniciar sesión</a></li>
