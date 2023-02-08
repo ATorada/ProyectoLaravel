@@ -237,6 +237,7 @@ textarea {
 
 input[type="submit"], .boton {
     background: linear-gradient(to right, #dbaeff, #d096ff);
+    width: 100%;
     cursor: pointer;
 }
 
