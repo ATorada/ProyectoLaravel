@@ -34,19 +34,11 @@
                 <span class="error">{{ $message }}</span>
             @enderror
             <textarea name="text" placeholder="Mensaje...">{{ old('text') }}</textarea>
-            @error('content')
+            @error('text')
                 <span class="error">{{ $message }}</span>
             @enderror
 
             <input type="submit" value="Enviar">
         </form>
-
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
     </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MessageRequest;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -40,7 +41,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MessageRequest $request)
     {
         $message = new Message();
         $message->name = $request->name;
