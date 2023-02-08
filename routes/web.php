@@ -25,9 +25,23 @@ Route::get('/where', function () {
     return view('where');
 })->name('where');
 
-Route::get('/lorem', function () {
-    return view('lorem');
-})->name('lorem');
+//Cookie settings, cookie policy, privacy policy y terms
+Route::get('/cookie-settings', function () {
+    return view('static.cookie_settings');
+})->name('cookie-settings');
+
+Route::get('/cookie-policy', function () {
+    return view('static.cookie_policy');
+})->name('cookie-policy');
+
+Route::get('/privacy-policy', function () {
+    return view('static.privacy_policy');
+})->name('privacy-policy');
+
+Route::get('/terms', function () {
+    return view('static.terms');
+})->name('terms');
+
 
 //Auth routes
 Route::get('/register', [LoginController::class, 'registerForm'])->name('registerForm');
