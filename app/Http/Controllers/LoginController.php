@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
         $user = new User();
         $user->name = $request->name;

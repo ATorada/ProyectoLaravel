@@ -10,9 +10,13 @@
                     <ul>
                 @endif
                 <li>
-                    <a href="{{ route('users.show', $user) }}">
-                        {{ $user->name }}
-                    </a>
+                    @auth
+                        <a href="{{ route('users.show', $user) }}">
+                    @endauth
+                    {{ $user->name }}
+                    @auth
+                        </a>
+                    @endauth
                 </li>
                 @if ($loop->last)
                     </ul>

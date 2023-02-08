@@ -10,17 +10,17 @@
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name" value="{{ old('name') }}">
             @error('name')
-                <p>{{ $message }}</p>
+                <span class="error">{{ $message }}</span>
             @enderror
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="{{ old('email') }}">
             @error('email')
-                <p>{{ $message }}</p>
+                <span class="error">{{ $message }}</span>
             @enderror
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
             @error('password')
-                <p>{{ $message }}</p>
+                <span class="error">{{ $message }}</span>
             @enderror
             <label for="password_confirmation">Confirmar contraseña</label>
             <input type="password" name="password_confirmation" id="password_confirmation">

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -48,7 +50,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        if (auth()->user()) {
+            return view('users.show', compact('user'));
+        } else {
+            return redirect()->route('users.index');
+        }
     }
 
     /**
@@ -59,7 +65,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        if (auth()->user()->id == $user->id) {
+            return view('users.edit', compact('user'));
+        } else {
+            return redirect()->route('users.index');
+        }
     }
 
     /**
@@ -69,14 +79,19 @@ class UserController extends Controller
      * @param User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(EditUserRequest $request, User $user)
     {
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
-        $user->role = $request->role;
-
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->twitch = $request->twitch;
+        $user->twitter = $request->twitter;
+        $user->instagram = $request->instagram;
         $user->save();
+
+        return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente');
     }
 
     /**
