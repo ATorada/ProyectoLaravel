@@ -22,7 +22,7 @@
         @endif
         @auth
             @if (auth()->user()->id == $user->id)
-                <a href="{{ route('users.edit', $user) }}">Editar perfil</a>
+                <a class="boton" href="{{ route('users.edit', $user) }}">Editar perfil</a>
             @endif
         @endauth
     </div>
