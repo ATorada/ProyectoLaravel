@@ -13,11 +13,6 @@
             @error('name')
                 <span class="error">{{ $message }}</span>
             @enderror
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}">
-            @error('email')
-                <span class="error">{{ $message }}</span>
-            @enderror
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
             @error('password')
