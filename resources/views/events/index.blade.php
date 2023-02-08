@@ -15,9 +15,11 @@
                 <ul>
             @endif
             <li>
-                <a class="destacado" href="{{ route('events.show', $event) }}">
+                @auth
+                    <a class="destacado" href="{{ route('events.show', $event) }}">{{ $event->name }}</a>
+                @else
                     {{ $event->name }}
-                </a>
+                @endauth
                 @auth
                     @if (auth()->user()->role == 'admin')
                         <br>
