@@ -24,12 +24,12 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:15',
             'description' => 'required|string|max:255',
             'date' => 'nullable|date',
             'hour' => 'nullable|date_format:H:i',
-            'tags' => 'nullable|string|max:100',
-            'location' => 'nullable|string|max:100',
+            'tags' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
             'visibility' => 'required|in:1,0',
         ];
     }

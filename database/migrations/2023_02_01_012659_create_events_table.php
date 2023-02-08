@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name', 15);
             $table->text('description');
             $table->boolean('visibility')->default(0);
             $table->date('date')->nullable();
             $table->time('hour')->nullable();
-            $table->string('location', 100)->nullable();
-            $table->string('tags', 100)->nullable();
+            $table->text('location')->nullable();
+            $table->text('tags')->nullable();
             $table->timestamps();
         });
     }
