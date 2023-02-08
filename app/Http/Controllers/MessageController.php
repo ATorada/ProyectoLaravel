@@ -17,7 +17,7 @@ class MessageController extends Controller
     {
 
         if (auth()->user()->role == "admin") {
-            $messages = Message::all();
+            $messages = Message::all()->sortByDesc('created_at');
             return view('messages.index', compact('messages'));
         } else {
             return redirect()->route('index');
@@ -62,6 +62,8 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         if (auth()->user()->role == "admin") {
+            $message->readed = true;
+            $message->save();
             return view('messages.show', compact('message'));
         } else {
             return redirect()->route('index');
