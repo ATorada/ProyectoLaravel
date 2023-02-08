@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,13 @@ Route::get('/where', function () {
     return view('where');
 })->name('where');
 
+//Auth routes
+Route::get('/register', [LoginController::class, 'registerForm'])->name('registerForm');
+Route::post('/register', [LoginController::class, 'register'])->name('register');
+Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 //Resource routes "Events"
 Route::resource('events', EventController::class);
 
@@ -32,3 +40,5 @@ Route::resource('messages', MessageController::class);
 
 //Resource routes "Users"
 Route::resource('users', UserController::class);
+
+
