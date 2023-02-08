@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="content">
+        <div class="success">
+            @if (session('success'))
+                {{ session('success') }}
+            @endif
+        </div>
         <h1>Eventos</h1>
         @forelse ($events as $event)
             @if ($loop->first)
@@ -14,6 +19,16 @@
                     {{ $event->name }}
                 </a>
                 @auth
+                    @if (auth()->user()->role == 'admin')
+                        <br>
+                        <br>
+                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>
+                        <form action="{{ route('events.destroy', $event) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    @endif
                     @if ($event->users->contains(auth()->user()))
                         <form action="{{ route('events.leave', $event) }}" method="POST">
                             @csrf
