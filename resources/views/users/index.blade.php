@@ -11,7 +11,7 @@
                 @endif
                 <li>
                     @auth
-                        <a href="{{ route('users.show', $user) }}">
+                        <a class="destacado" href="{{ route('users.show', $user) }}">
                     @endauth
                     {{ $user->name }}
                     @auth
