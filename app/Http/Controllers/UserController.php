@@ -86,9 +86,11 @@ class UserController extends Controller
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
-        $user->twitch = $request->twitch;
-        $user->twitter = $request->twitter;
-        $user->instagram = $request->instagram;
+
+        $user->twitch = $request->twitch ? "https://www.twitch.tv/" . $request->twitch : null;
+        $user->twitter = $request->twitter ? "https://www.twitter.com/" . $request->twitter : null;
+        $user->instagram = $request->instagram ? "https://www.instagram.com/" . $request->instagram : null;
+        
         $user->save();
 
         return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente');

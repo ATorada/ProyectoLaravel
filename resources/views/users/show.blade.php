@@ -12,16 +12,17 @@
         <h1>{{ $user->name }}</h1>
         <p>Usuario desde: {{ $user->created_at->format('d/m/Y') }}</p>
         @if ($user->twitch)
-            <p>Twitch: {{ $user->twitch }}</p>
+            <a class="redSocial" href="{{ $user->twitch }}"><img src="{{ asset('img/twitch.png') }}" alt="Twitch"></a>
         @endif
         @if ($user->instagram)
-            <p>Instagram: {{ $user->instagram }}</p>
+            <a class="redSocial" href="{{ $user->instagram }}"><img src="{{ asset('img/instagram.png') }}" alt="Instagram"></a>
         @endif
         @if ($user->twitter)
-            <p>Twitter: {{ $user->twitter }}</p>
+            <a class="redSocial" href="{{ $user->twitter }}"><img src="{{ asset('img/twitter.png') }}" alt="Twitter"></a>
         @endif
         @auth
             @if (auth()->user()->id == $user->id)
+            <br>
                 <a class="boton" href="{{ route('users.edit', $user) }}">Editar perfil</a>
             @endif
         @endauth
