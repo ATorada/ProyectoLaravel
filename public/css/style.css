@@ -262,6 +262,10 @@ input[type="submit"], .boton {
     cursor: pointer;
 }
 
+input[type="submit"]:not(.botones input) {
+    width: 50%;
+}
+
 input[type="submit"]:hover, .boton {
     background: linear-gradient(to right, #d096ff, #dbaeff);
 }
