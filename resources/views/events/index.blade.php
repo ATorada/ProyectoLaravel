@@ -21,13 +21,14 @@
                     {{ $event->name }}
                 @endauth
                 @auth
+                <div class="botones">
                     @if (auth()->user()->role == 'admin')
-                        <br>
-                        <br>
-                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>
+
+                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>    
+
                         <form action="{{ route('events.destroy', $event) }}" method="POST">
                             @csrf
-                            @method('DELETE')
+                            @method ('DELETE')
                             <input type="submit" value="Eliminar">
                         </form>
                     @endif
@@ -43,6 +44,7 @@
                             <input type="submit" value="Unirse">
                         </form>
                     @endif
+                </div>
                 @endauth
             </li>
             @if ($loop->last)

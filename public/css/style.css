@@ -167,6 +167,7 @@ nav a:link,
     align-items: center;
     list-style: none;
     margin: 0;
+    margin-left: 12px;
     padding: 0;
 }
 
@@ -195,6 +196,26 @@ a:active {
     color: #a95fe6;
 }
 
+.botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.botones a, .botones input {
+    margin-right: 10px;
+}
+
+.botones input {
+    padding: 12px;
+}
+
+.botones form {
+    margin-top: 0;
+}
+
 /* Formulario */
 
 form {
@@ -209,7 +230,7 @@ form {
     opacity: 1 !important;
     text-decoration: none;
     color: black;
-    width: 100% !important;
+    width: fit-content !important;
 }
 
 .boton:hover {
@@ -237,7 +258,7 @@ textarea {
 
 input[type="submit"], .boton {
     background: linear-gradient(to right, #dbaeff, #d096ff);
-    width: 100%;
+    width: fit-content;
     cursor: pointer;
 }
 
