@@ -38,7 +38,7 @@
             @error('twitter')
                 <span class="error">{{ $message }}</span>
             @enderror
-            <input type="submit" name="enviar" value="Actualizar perfil">
+            <input class="boton" type="submit" name="enviar" value="Actualizar perfil">
         </form>
     </div>
 @endsection

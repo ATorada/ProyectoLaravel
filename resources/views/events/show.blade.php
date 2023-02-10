@@ -9,20 +9,6 @@
                 {{ session('success') }}
             @endif
         </div>
-        @auth
-            @if ($event->users->contains(auth()->user()))
-                <form action="{{ route('events.leave', ["event" => $event, "ruta" => 'show']) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Borrarse del evento">
-                </form>
-            @else
-                <form action="{{ route('events.join', ["event" => $event, "ruta" => 'show']) }}" method="POST">
-                    @csrf
-                    <input type="submit" value="Unirse al evento">
-                </form>
-            @endif
-        @endauth
             <h1>{{ $event->name }}</h1>
             @if ($event->date)
                 <p>Fecha: {{ $event->date }}</p>
@@ -45,21 +31,38 @@
             @endauth
             {{-- <p>Tags: {{ $event->tags->implode('name', ', ') }}</p> --}}
 
+            <div class="botones">
             @auth
+                @if ($event->users->contains(auth()->user()))
+                    <form action="{{ route('events.leave', ["event" => $event, "ruta" => 'show']) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="botonRojo" value="Borrarse del evento">
+                    </form>
+                @else
+                    <form action="{{ route('events.join', ["event" => $event, "ruta" => 'show']) }}" method="POST">
+                        @csrf
+                        <input type="submit" class="botonVerde" value="Unirse al evento">
+                    </form>
+                @endif
+
                 @if (auth()->user()->role == 'admin')
-                    <a class="boton" href="{{ route('events.edit', $event) }}">Editar evento</a>
                     <form action="{{ route('events.destroy', $event) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Eliminar evento">
+                        <input type="submit" class="botonRojo" value="Eliminar evento">
                     </form>
+                    <a class="boton" href="{{ route('events.edit', $event) }}">Editar evento</a>
                 @endif
             @endauth
+            </div>
 
             <h2>Asistentes</h2>
             <ul>
                 @forelse ($event->users as $user)
-                    <li>{{ $user->name }}</li>
+                    <li>
+                        <a class="destacado" href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
+                    </li>
                 @empty
                     <li>No hay asistentes</li>
                 @endforelse

@@ -16,7 +16,7 @@
             <input type="password" name="password" id="password">
             <label for="remember">Recuérdame</label>
             <input type="checkbox" name="remember" id="remember">
-            <input type="submit" name="enviar" value="Iniciar sesión">
+            <input class="boton" type="submit" name="enviar" value="Iniciar sesión">
         </form>
     </div>
 @endsection

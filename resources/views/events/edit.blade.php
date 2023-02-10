@@ -41,7 +41,7 @@
             @error('visibility')
                 <span class="error">{{ $message }}</span>
             @enderror
-            <input type="submit" value="Editar">
+            <input class="boton" type="submit" value="Editar">
         </form>
     </div>
 @endsection

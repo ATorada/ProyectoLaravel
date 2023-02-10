@@ -87,6 +87,8 @@ nav a:link,
 
 .links {
     margin-top: 10px;
+    opacity: 0;
+    animation: blur 1.5s ease-in-out 1s forwards;
 }
 
 .logo {
@@ -162,8 +164,10 @@ nav a:link,
 }
 
 .content ul {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
+    justify-content: center;
     align-items: center;
     list-style: none;
     margin: 0;
@@ -174,10 +178,12 @@ nav a:link,
 .content li {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 20px;
     font-weight: bold;
     border-radius: 10px;
     padding: 5px;
+    background-color: rgba(255, 255, 255, 0.192);
 }
 
 .content .destacado {
@@ -193,7 +199,7 @@ a {
 
 a:hover,
 a:active {
-    color: #a95fe6;
+    color: #bf82f1;
 }
 
 .botones {
@@ -228,6 +234,17 @@ a:active {
     transform: scale(1.1);
 }
 
+.mensajes ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensajes ul li {
+    width: 100%;
+}
+
 /* Formulario */
 
 form {
@@ -239,6 +256,7 @@ form {
 }
 
 .boton {
+    display: inline-block;
     opacity: 1 !important;
     text-decoration: none;
     color: black;
@@ -246,8 +264,29 @@ form {
 }
 
 .boton:hover {
-    color: black;
+    color: #574d5e;
     background: linear-gradient(to right, #d096ff, #dbaeff);
+    transform: scale(1.1) !important;
+}
+
+.botonVerde {
+    background: linear-gradient(to right, #ecfff3, #cfffed) !important;
+}
+
+.botonVerde:hover {
+    background: linear-gradient(to right, #cfffed, #ecfff3) !important;
+    color: #59685e;
+    transform: scale(1.1);
+}
+
+.botonRojo {
+    background: linear-gradient(to right, #ffc7c7, #ff9191) !important;
+}
+
+.botonRojo:hover {
+    background: linear-gradient(to right, #ff9191, #ffc7c7) !important;
+    color: #5e5959;
+    transform: scale(1.1);
 }
 
 input,
@@ -275,7 +314,9 @@ input[type="submit"], .boton {
 }
 
 input[type="submit"]:not(.botones input) {
-    width: 50%;
+    width: fit-content;
+    margin: 0;
+    padding: 10px;
 }
 
 input[type="submit"]:hover, .boton {
@@ -293,7 +334,17 @@ input[type="submit"]:focus, .boton {
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    margin: 0 10px;
+    margin: 10px;
+}
+
+select {
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .content a {

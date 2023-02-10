@@ -44,7 +44,7 @@
                 @endforeach
             </select>
             --}}
-            <input type="submit" value="Crear">
+            <input class="boton" type="submit" value="Crear">
         </form>
     </div>
 @endsection

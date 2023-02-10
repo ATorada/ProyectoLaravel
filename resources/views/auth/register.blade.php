@@ -24,7 +24,7 @@
             @enderror
             <label for="password_confirmation">Confirmar contraseña</label>
             <input type="password" name="password_confirmation" id="password_confirmation">
-            <input type="submit" name="enviar" value="Registrarse">
+            <input class="boton" type="submit" name="enviar" value="Registrarse">
         </form>
     </div>
 @endsection

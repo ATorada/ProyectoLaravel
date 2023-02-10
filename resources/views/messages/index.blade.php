@@ -3,7 +3,7 @@
 @section('title', 'Mensajes')
 
 @section('content')
-    <div class="content">
+    <div class="content mensajes">
         <h1>Mensajes</h1>
         @forelse ($messages as $message)
             @if ($loop->first)
@@ -15,7 +15,7 @@
                 @else
                 <a href="{{ route('messages.show', $message) }}">
                 @endif
-                    {{ $message->name . ' - ' . $message->subject }}
+                    {{ $message->name}} <br> {{$message->subject }}
                 </a>
             </li>
             @if ($loop->last)
