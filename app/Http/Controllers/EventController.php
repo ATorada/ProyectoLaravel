@@ -17,7 +17,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        //Si es administrador, muestra todos los eventos sino solo los públicos
+        if (isset(auth()->user()->role) && auth()->user()->role == "admin") {
+            $events = Event::all();
+        } else {
+            $events = Event::where('visibility', 1)->get();
+        }
+
         return view('events.index', compact('events'));
     }
 
@@ -29,7 +35,7 @@ class EventController extends Controller
     public function create()
     {
 
-        if (auth()->user()->role == "admin") {
+        if (isset(auth()->user()->role) && auth()->user()->role == "admin") {
             return view('events.create');
         } else {
             return redirect()->route('events.index');
@@ -72,7 +78,7 @@ class EventController extends Controller
                 return redirect()->route('events.index');
             }
         } else {
-            return redirect()->route('login');
+            return redirect()->route('events.index');
         }
     }
 
