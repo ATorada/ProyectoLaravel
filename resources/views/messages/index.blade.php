@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="content mensajes">
+        <div class="success">
+            @if (session('success'))
+                {{ session('success') }}
+            @endif
+        </div>
         <h1>Mensajes</h1>
         @forelse ($messages as $message)
             @if ($loop->first)

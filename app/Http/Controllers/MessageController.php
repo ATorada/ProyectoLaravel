@@ -16,7 +16,6 @@ class MessageController extends Controller
      */
     public function index()
     {
-
         if (auth()->user()->role == "admin") {
             $messages = Message::all()->sortByDesc('created_at');
             return view('messages.index', compact('messages'));
@@ -102,7 +101,11 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        $message->delete();
-        return redirect()->route('messages.index');
+        if (auth()->user()->role == "admin") {
+            $message->delete();
+            return redirect()->route('messages.index')->with('success', 'Mensaje eliminado correctamente');
+        } else {
+            return redirect()->route('index');
+        }
     }
 }
