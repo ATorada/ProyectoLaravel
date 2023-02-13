@@ -51,9 +51,10 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Resource routes "Events"
-Route::post('/events/{event}/join', [EventController::class, 'join'])->name('events.join');
-Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave');
-Route::resource('events', EventController::class);
+Route::post('/events/{event}/join', [EventController::class, 'join'])->name('events.join')->middleware('auth');
+Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave')->middleware('auth');
+Route::resource('events', EventController::class)->only(['index']);
+Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth');
 
 //Resource routes "Messages"
 //Route::resource('messages', MessageController::class)->except(['edit', 'update']);

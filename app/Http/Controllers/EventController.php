@@ -35,7 +35,7 @@ class EventController extends Controller
     public function create()
     {
 
-        if (isset(auth()->user()->role) && auth()->user()->role == "admin") {
+        if (auth()->user()->role == "admin") {
             return view('events.create');
         } else {
             return redirect()->route('events.index');
@@ -50,6 +50,7 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     {
+        if (auth()->user()->role == "admin") {
         $event = new Event();
         $event->name = $request->name;
         $event->description = $request->description;
@@ -61,6 +62,9 @@ class EventController extends Controller
         $event->save();
 
         return redirect()->route('events.show', $event->id)->with('success', 'Evento creado correctamente');
+        } else {
+            return redirect()->route('events.index');
+        }
     }
 
     /**
@@ -71,15 +75,13 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        if (auth()->user()) {
-            if ($event->visibility == 1 || auth()->user()->role == "admin") {
-                return view('events.show', compact('event'));
-            } else {
-                return redirect()->route('events.index');
-            }
+
+        if ($event->visibility == 1 || auth()->user()->role == "admin") {
+            return view('events.show', compact('event'));
         } else {
             return redirect()->route('events.index');
         }
+
     }
 
     /**
@@ -108,16 +110,20 @@ class EventController extends Controller
     public function update(EventRequest $request, Event $event)
     {
 
-        $event->name = $request->name;
-        $event->description = $request->description;
-        $event->visibility = $request->visibility;
-        $event->date = $request->date;
-        $event->hour = $request->hour;
-        $event->location = $request->location;
+        if (auth()->user()->role == "admin") {
+            $event->name = $request->name;
+            $event->description = $request->description;
+            $event->visibility = $request->visibility;
+            $event->date = $request->date;
+            $event->hour = $request->hour;
+            $event->location = $request->location;
 
-        $event->save();
+            $event->save();
 
-        return redirect()->route('events.show', $event->id)->with('success', 'Evento actualizado correctamente');
+            return redirect()->route('events.show', $event->id)->with('success', 'Evento actualizado correctamente');
+        } else {
+            return redirect()->route('events.index');
+        }
     }
 
     /**
@@ -128,31 +134,52 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $event->users()->detach();
-        $event->delete();
+        if (auth()->user()->role == "admin") {
+            $event->users()->detach();
+            $event->delete();
 
-        return redirect()->route('events.index')->with('success', 'Evento eliminado correctamente');
-    }
-
-    public function join(Request $request, Event $event)
-    {
-        $event->users()->attach(auth()->user()->id);
-
-        if ($request->get('ruta') == 'index') {
-            return redirect()->route('events.index')->with('success', 'Te has unido al evento correctamente');
+            return redirect()->route('events.index')->with('success', 'Evento eliminado correctamente');
         } else {
-            return redirect()->route('events.show', $event->id)->with('success', 'Te has unido al evento correctamente');
+            return redirect()->route('events.index');
         }
     }
 
+    /**
+     * Leave the user from the event.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function join(Request $request, Event $event)
+    {
+        if (auth()->user()->role == "admin" || $event->visibility == 1) {
+            $event->users()->attach(auth()->user()->id);
+
+            if ($request->get('ruta') == 'index') {
+                return redirect()->route('events.index')->with('success', 'Te has unido al evento correctamente');
+            } else {
+                return redirect()->route('events.show', $event->id)->with('success', 'Te has unido al evento correctamente');
+            } 
+        }
+    }
+
+
+    /**
+     * Leave the user from the event.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
     public function leave(Request $request, Event $event)
     {
-        $event->users()->detach(auth()->user()->id);
+        if (auth()->user()->role == "admin" || $event->visibility == 1) {
+            $event->users()->detach(auth()->user()->id);
         
-        if ($request->get('ruta') == 'index') {
-            return redirect()->route('events.index')->with('success', 'Te has salido al evento correctamente');
-        } else {
-            return redirect()->route('events.show', $event->id)->with('success', 'Te has salido al evento correctamente');
+            if ($request->get('ruta') == 'index') {
+                return redirect()->route('events.index')->with('success', 'Te has salido al evento correctamente');
+            } else {
+                return redirect()->route('events.show', $event->id)->with('success', 'Te has salido al evento correctamente');
+            }
         }
     }
 }
