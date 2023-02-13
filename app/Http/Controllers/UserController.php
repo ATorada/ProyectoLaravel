@@ -50,7 +50,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        if (auth()->user()) {
+        //Si el usuario es el mismo
+        if (auth()->user()->id == $user->id) {
             return view('users.show', compact('user'));
         } else {
             return redirect()->route('users.index');
@@ -81,19 +82,23 @@ class UserController extends Controller
      */
     public function update(EditUserRequest $request, User $user)
     {
-        $user->name = $request->name;
+        if (auth()->user()->id == $user->id) {
+            $user->name = $request->name;
 
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
+            if ($request->password) {
+                $user->password = Hash::make($request->password);
+            }
+
+            $user->twitch = $request->twitch ? "https://www.twitch.tv/" . $request->twitch : null;
+            $user->twitter = $request->twitter ? "https://www.twitter.com/" . $request->twitter : null;
+            $user->instagram = $request->instagram ? "https://www.instagram.com/" . $request->instagram : null;
+            
+            $user->save();
+
+            return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente'); 
+        } else {
+            return redirect()->route('users.index');
         }
-
-        $user->twitch = $request->twitch ? "https://www.twitch.tv/" . $request->twitch : null;
-        $user->twitter = $request->twitter ? "https://www.twitter.com/" . $request->twitter : null;
-        $user->instagram = $request->instagram ? "https://www.instagram.com/" . $request->instagram : null;
-        
-        $user->save();
-
-        return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente');
     }
 
     /**
@@ -104,8 +109,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-
-        return redirect()->route('users.index');
+        if (auth()->user()->id == $user->id) {
+            $user->delete();
+            return redirect()->route('index');
+        } else {
+            return redirect()->route('users.index');
+        }
     }
 }

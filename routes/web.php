@@ -61,7 +61,8 @@ Route::resource('messages', MessageController::class)->only(['create', 'store'])
 Route::resource('messages', MessageController::class)->only(['index', 'destroy', 'show'])->middleware('auth');
 
 //Resource routes "Users" except create and store
-Route::resource('users', UserController::class)->except(['create', 'store']);
+Route::resource('users', UserController::class)->only(['index']);
+Route::resource('users', UserController::class)->only(['show', 'edit', 'update', 'destroy'])->middleware('auth');
 
 
 
