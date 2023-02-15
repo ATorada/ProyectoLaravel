@@ -7,6 +7,7 @@ use App\Http\Requests\EditUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -18,6 +19,11 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        foreach ($users as $user) {
+            if (Storage::disk('public')->exists('img/avatar'.'/'.$user->id.'.jpg')) {
+                $user->imagen = true;
+            }
+        }
         return view('users.index', compact('users'));
     }
 
@@ -50,12 +56,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //Si el usuario es el mismo
-        if (auth()->user()->id == $user->id) {
-            return view('users.show', compact('user'));
-        } else {
-            return redirect()->route('users.index');
+        if (Storage::disk('public')->exists('img/avatar'.'/'.$user->id.'.jpg')) {
+            $user->imagen = true;
         }
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -87,6 +91,12 @@ class UserController extends Controller
 
             if ($request->password) {
                 $user->password = Hash::make($request->password);
+            }
+
+            if ($request->hasFile('imagen')) {
+                $image = $request->file('imagen');
+                $name = $user->id . '.' . $image->getClientOriginalExtension();
+                Storage::disk('public')->put('img/avatar'.'/'.$name, file_get_contents($image), 'public');
             }
 
             $user->twitch = $request->twitch ? "https://www.twitch.tv/" . $request->twitch : null;

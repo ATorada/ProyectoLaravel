@@ -11,6 +11,9 @@
                 @endif
                 <li>
                     @auth
+                        @if ($user->imagen)
+                            <img class="img_usuario" src="{{ asset('storage/img/avatar/'.$user->id.'.jpg') }}" alt="Imagen de perfil">
+                        @endif
                         <a class="destacado" href="{{ route('users.show', $user) }}">
                     @endauth
                     {{ $user->name }}

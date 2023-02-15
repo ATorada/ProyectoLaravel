@@ -5,9 +5,14 @@
 @section('content')
     <div class="content">
         <h1>Editar perfil</h1>
-        <form action="{{ route('users.update', $user) }}" method="POST">
+        <form action="{{ route('users.update', $user) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <label for="imagen">Imagen de perfil</label>
+            <input type="file" name="imagen" id="imagen">
+            @error('imagen')
+                <span class="error">{{ $message }}</span>
+            @enderror
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
             @error('name')

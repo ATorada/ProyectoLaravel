@@ -9,6 +9,9 @@
                 {{ session('success') }}
             @endif
         </div>
+        @if ($user->imagen)
+            <img class="img_perfil" src="{{ asset('storage/img/avatar/'.$user->id.'.jpg') }}" alt="Imagen de perfil">
+        @endif
         <h1>{{ $user->name }}</h1>
         <p>Usuario desde: {{ $user->created_at->format('d/m/Y') }}</p>
         @if ($user->twitch)
