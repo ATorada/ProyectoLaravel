@@ -176,7 +176,10 @@ nav a:link,
 }
 
 .content li {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-right: 10px;
     margin-bottom: 10px;
     font-size: 20px;
@@ -234,7 +237,7 @@ a:active {
     transform: scale(1.1);
 }
 
-.mensajes ul {
+.mensajes ul, .usuarios ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -243,6 +246,10 @@ a:active {
 
 .mensajes ul li {
     width: 100%;
+}
+
+.usuarios ul li {
+    width: 50%;
 }
 
 .img_perfil {

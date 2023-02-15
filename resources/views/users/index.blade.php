@@ -3,7 +3,7 @@
 @section('title', 'Usuarios')
 
 @section('content')
-    <div class="content">
+    <div class="content usuarios">
         <h1>Usuarios</h1>
             @forelse ($users as $user)
                 @if ($loop->first)

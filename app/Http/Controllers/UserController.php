@@ -95,17 +95,17 @@ class UserController extends Controller
 
             if ($request->hasFile('imagen')) {
                 $image = $request->file('imagen');
-                $name = $user->id . '.' . $image->getClientOriginalExtension();
+                $name = $user->id . '.' . 'jpg';
                 Storage::disk('public')->put('img/avatar'.'/'.$name, file_get_contents($image), 'public');
             }
 
             $user->twitch = $request->twitch ? "https://www.twitch.tv/" . $request->twitch : null;
             $user->twitter = $request->twitter ? "https://www.twitter.com/" . $request->twitter : null;
             $user->instagram = $request->instagram ? "https://www.instagram.com/" . $request->instagram : null;
-            
+
             $user->save();
 
-            return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente'); 
+            return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente');
         } else {
             return redirect()->route('users.index');
         }
