@@ -29,5 +29,6 @@
         @empty
             No hay mensajes.
         @endforelse
+        <div>{{ $messages->links() }}</div>
     </div>
 @endsection

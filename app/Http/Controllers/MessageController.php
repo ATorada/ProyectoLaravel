@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MessageRequest;
 use Illuminate\Http\Request;
 
+
 class MessageController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class MessageController extends Controller
     public function index()
     {
         if (auth()->user()->role == "admin") {
-            $messages = Message::all()->sortByDesc('created_at');
+            $messages = Message::orderBy('created_at', 'desc')->simplePaginate(5);
             return view('messages.index', compact('messages'));
         } else {
             return redirect()->route('index');

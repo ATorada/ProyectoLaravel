@@ -186,7 +186,7 @@ nav a:link,
     background-color: rgba(255, 255, 255, 0.192);
 }
 
-.content .destacado {
+.content .destacado, .content nav a {
     text-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
     opacity: 1;
 }
@@ -347,7 +347,7 @@ select {
     margin-bottom: 10px;
 }
 
-.content a {
+.content a, .content nav span {
     text-shadow: none;
     opacity: 0.5;
 }
