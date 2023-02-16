@@ -24,7 +24,7 @@
                 <div class="botones">
                     @if (auth()->user()->role == 'admin')
 
-                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>    
+                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>
 
                         <form action="{{ route('events.destroy', $event) }}" method="POST">
                             @csrf

@@ -30,6 +30,7 @@ class EventFactory extends Factory
         */
         return [
             'name' => fake()->text(15),
+            'slug' => Str::slug(fake()->text(15)),
             'description' => fake()->text(),
             'visibility' => fake()->boolean(),
             'date' => fake()->date(),

@@ -6,7 +6,7 @@ use App\Models\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -53,6 +53,7 @@ class EventController extends Controller
         if (auth()->user()->role == "admin") {
         $event = new Event();
         $event->name = $request->name;
+        $event->slug = Str::slug($request->name);
         $event->description = $request->description;
         $event->visibility = $request->visibility;
         $event->date = $request->date;
@@ -112,6 +113,7 @@ class EventController extends Controller
 
         if (auth()->user()->role == "admin") {
             $event->name = $request->name;
+            $event->slug = Str::slug($request->name);
             $event->description = $request->description;
             $event->visibility = $request->visibility;
             $event->date = $request->date;
@@ -158,8 +160,8 @@ class EventController extends Controller
             if ($request->get('ruta') == 'index') {
                 return redirect()->route('events.index')->with('success', 'Te has unido al evento correctamente');
             } else {
-                return redirect()->route('events.show', $event->id)->with('success', 'Te has unido al evento correctamente');
-            } 
+                return redirect()->route('events.show', $event->slug)->with('success', 'Te has unido al evento correctamente');
+            }
         }
     }
 
@@ -174,11 +176,10 @@ class EventController extends Controller
     {
         if (auth()->user()->role == "admin" || $event->visibility == 1) {
             $event->users()->detach(auth()->user()->id);
-        
             if ($request->get('ruta') == 'index') {
                 return redirect()->route('events.index')->with('success', 'Te has salido al evento correctamente');
             } else {
-                return redirect()->route('events.show', $event->id)->with('success', 'Te has salido al evento correctamente');
+                return redirect()->route('events.show', $event->slug)->with('success', 'Te has salido al evento correctamente');
             }
         }
     }

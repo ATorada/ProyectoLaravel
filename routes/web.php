@@ -5,6 +5,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,8 +54,16 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //Resource routes "Events"
 Route::post('/events/{event}/join', [EventController::class, 'join'])->name('events.join')->middleware('auth');
 Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave')->middleware('auth');
-Route::resource('events', EventController::class)->only(['index']);
-Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth');
+Route::resource('events', EventController::class)->only(['index'])
+->parameters(['event' => 'slug'])
+->missing(function () {
+    return Redirect::route('index');
+});
+Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth')
+->parameters(['event' => 'slug'])
+->missing(function () {
+    return Redirect::route('index');
+});
 
 //Resource routes "Messages"
 //Route::resource('messages', MessageController::class)->except(['edit', 'update']);
