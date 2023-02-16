@@ -26,9 +26,9 @@ class EditUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'password' => 'nullable|string|min:8|confirmed',
-            'twitch' => 'nullable|string|max:255',
-            'twitter' => 'nullable|string|max:255',
-            'instagram' => 'nullable|string|max:255',
+            'twitch' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
+            'twitter' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
+            'instagram' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
         ];
     }
 
@@ -38,6 +38,9 @@ class EditUserRequest extends FormRequest
             'name.required' => 'El nombre es obligatorio',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres',
             'password.confirmed' => 'Las contraseñas no coinciden',
+            'twitch.regex' => 'El nombre de usuario de Twitch no es válido',
+            'twitter.regex' => 'El nombre de usuario de Twitter no es válido',
+            'instagram.regex' => 'El nombre de usuario de Instagram no es válido',
         ];
     }
 }

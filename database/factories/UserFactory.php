@@ -37,9 +37,10 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'role' => 'member',
             'birthday' => fake()->date(),
-            'twitter' => fake()->url(),
-            'twitch' => fake()->url(),
-            'instagram' => fake()->url(),
+            //Fake username for social media
+            'twitter' => fake()->userName(),
+            'twitch' => fake()->userName(),
+            'instagram' => fake()->userName(),
         ];
     }
 

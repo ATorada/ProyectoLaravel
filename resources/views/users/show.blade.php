@@ -15,13 +15,13 @@
         <h1>{{ $user->name }}</h1>
         <p>Usuario desde: {{ $user->created_at->format('d/m/Y') }}</p>
         @if ($user->twitch)
-            <a class="redSocial" href="{{ $user->twitch }}"><img src="{{ asset('img/twitch.png') }}" alt="Twitch"></a>
+            <a class="redSocial" href="https://www.twitch.tv/{{ $user->twitch }}"><img src="{{ asset('img/twitch.png') }}" alt="Twitch"></a>
         @endif
         @if ($user->instagram)
-            <a class="redSocial" href="{{ $user->instagram }}"><img src="{{ asset('img/instagram.png') }}" alt="Instagram"></a>
+            <a class="redSocial" href="https://www.instagram.com/{{ $user->instagram }}"><img src="{{ asset('img/instagram.png') }}" alt="Instagram"></a>
         @endif
         @if ($user->twitter)
-            <a class="redSocial" href="{{ $user->twitter }}"><img src="{{ asset('img/twitter.png') }}" alt="Twitter"></a>
+            <a class="redSocial" href="https://www.twitter.com/{{ $user->twitter }}"><img src="{{ asset('img/twitter.png') }}" alt="Twitter"></a>
         @endif
         @auth
             @if (auth()->user()->id == $user->id)
