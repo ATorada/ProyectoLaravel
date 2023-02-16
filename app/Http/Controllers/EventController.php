@@ -112,6 +112,7 @@ class EventController extends Controller
     {
 
         if (auth()->user()->role == "admin") {
+
             $event->name = $request->name;
             $event->slug = Str::slug($request->name);
             $event->description = $request->description;
@@ -119,6 +120,7 @@ class EventController extends Controller
             $event->date = $request->date;
             $event->hour = $request->hour;
             $event->location = $request->location;
+            $event->tags = $request->tags;
 
             $event->save();
 

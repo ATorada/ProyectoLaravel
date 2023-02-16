@@ -29,7 +29,10 @@
                     <p>Visibilidad: {{ $event->visibility ? 'Público' : 'Privado' }}</p>
                 @endif
             @endauth
-            {{-- <p>Tags: {{ $event->tags->implode('name', ', ') }}</p> --}}
+
+            @if ($event->tags)
+                <p>Tags: {{ $event->tags }}</p>
+            @endif
 
             <div class="botones">
             @auth

@@ -41,6 +41,13 @@
             @error('visibility')
                 <span class="error">{{ $message }}</span>
             @enderror
+
+            <label for="tags">Tags</label>
+            <input type="text" name="tags" value="{{ $event->tags }}">
+
+            @error('tags')
+                <span class="error">{{ $message }}</span>
+            @enderror
             <input class="boton" type="submit" value="Editar">
         </form>
     </div>

@@ -36,7 +36,7 @@ class EventFactory extends Factory
             'date' => fake()->date(),
             'hour' => fake()->time(),
             'location' => fake()->address(),
-            //'tags' => fake()->text(),
+            'tags' => fake()->words(5, true),
         ];
     }
 

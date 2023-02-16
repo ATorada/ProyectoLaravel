@@ -37,13 +37,14 @@
                 <option value="1">Público</option>
                 <option value="0">Privado</option>
             </select>
-            {{--
-            <select name="tags[]" id="tags" multiple>
-                @foreach ($tags as $tag)
-                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                @endforeach
-            </select>
-            --}}
+            @error('visibility')
+                <span class="error">{{ $message }}</span>
+            @enderror
+            <label for="tags">Tags</label>
+            <input type="text" name="tags" id="tags" value="{{ old('tags') }}">
+            @error('tags')
+                <span class="error">{{ $message }}</span>
+            @enderror
             <input class="boton" type="submit" value="Crear">
         </form>
     </div>

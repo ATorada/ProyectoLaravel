@@ -28,7 +28,7 @@ class EventRequest extends FormRequest
             'description' => 'required|string|max:255',
             'date' => 'nullable|date',
             'hour' => 'nullable|date_format:H:i',
-            'tags' => 'nullable|string|max:255',
+            'tags' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9,]+$/',
             'location' => 'nullable|string|max:255',
             'visibility' => 'required|in:1,0',
         ];
@@ -42,8 +42,10 @@ class EventRequest extends FormRequest
             'date.date' => 'La fecha debe ser una fecha válida',
             'hour.date_format' => 'La hora debe ser una hora válida',
             'tags.string' => 'Las etiquetas deben ser un texto válido',
+            'tags.regex' => 'Las etiquetas deben ser un texto válido, sin espacios, ni caracteres especiales. Separadas por comas',
             'location.string' => 'La ubicación debe ser un texto válido',
             'visibility.required' => 'La visibilidad es obligatoria',
+            'visibility.in' => 'La visibilidad debe ser 1 o 0',
         ];
     }
 }

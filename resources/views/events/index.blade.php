@@ -20,6 +20,9 @@
                 @else
                     {{ $event->name }}
                 @endauth
+                @if ($event->tags)
+                <p>Tags: {{ $event->tags }}</p>
+                @endif
                 @auth
                 <div class="botones">
                     @if (auth()->user()->role == 'admin')
