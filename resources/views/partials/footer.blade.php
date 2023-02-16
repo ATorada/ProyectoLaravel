@@ -1,7 +1,7 @@
 <footer>
     <div class="footer">
         <div class="content">
-            <p>Asociación</p>
+            <p>Zombie Eradication Operations</p>
             <p>Desarrollado por Ángel</p>
         </div>
         <div class="links">
