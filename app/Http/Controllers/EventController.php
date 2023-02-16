@@ -62,7 +62,7 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect()->route('events.show', $event->id)->with('success', 'Evento creado correctamente');
+        return redirect()->route('events.show', $event->slug)->with('success', 'Evento creado correctamente');
         } else {
             return redirect()->route('events.index');
         }
@@ -124,7 +124,7 @@ class EventController extends Controller
 
             $event->save();
 
-            return redirect()->route('events.show', $event->id)->with('success', 'Evento actualizado correctamente');
+            return redirect()->route('events.show', $event->slug)->with('success', 'Evento actualizado correctamente');
         } else {
             return redirect()->route('events.index');
         }
