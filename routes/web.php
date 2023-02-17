@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
+//Ruta para la página principal
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
+//Ruta para la página de Dónde estamos
 Route::get('/where', function () {
     return view('where');
 })->name('where');
@@ -51,28 +53,35 @@ Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//Resource routes "Events"
-Route::post('/events/{event}/join', [EventController::class, 'join'])->name('events.join')->middleware('auth');
-Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave')->middleware('auth');
-Route::resource('events', EventController::class)->only(['index'])
-->parameters(['event' => 'slug'])
-->missing(function () {
-    return Redirect::route('index');
-});
-Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth')
-->parameters(['event' => 'slug'])
-->missing(function () {
-    return Redirect::route('index');
-});
+//~~Resource routes "Events"~~
 
-//Resource routes "Messages"
-//Route::resource('messages', MessageController::class)->except(['edit', 'update']);
+//Ruta para unirse a un evento
+Route::post('/events/{event}/join', [EventController::class, 'join'])->name('events.join')->middleware('auth');
+//Ruta para dejar un evento
+Route::delete('/events/{event}/leave', [EventController::class, 'leave'])->name('events.leave')->middleware('auth');
+//Ruta para ver los eventos
+Route::resource('events', EventController::class)->only(['index'])
+    ->parameters(['event' => 'slug'])
+    ->missing(function () {
+        return Redirect::route('index');
+    });
+//Rutas para crear, ver, editar y eliminar eventos
+Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth')
+    ->parameters(['event' => 'slug'])
+    ->missing(function () {
+        return Redirect::route('index');
+    });
+
+//~~Resource routes "Messages"~~
+
+//Ruta para crear un mensaje
 Route::resource('messages', MessageController::class)->only(['create', 'store']);
+//Rutas para ver, editar y eliminar mensajes
 Route::resource('messages', MessageController::class)->only(['index', 'destroy', 'show'])->middleware('auth');
 
-//Resource routes "Users" except create and store
+//~~Resource routes "Users"~~
+
+//Ruta para ver los usuarios
 Route::resource('users', UserController::class)->only(['index']);
+//Rutas para ver, editar y eliminar usuarios
 Route::resource('users', UserController::class)->only(['show', 'edit', 'update', 'destroy'])->middleware('auth');
-
-
-
