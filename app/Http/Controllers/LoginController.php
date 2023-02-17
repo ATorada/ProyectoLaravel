@@ -34,7 +34,7 @@ class LoginController extends Controller
     /**
      * Crea un nuevo usuario
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\RegisterRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function register(RegisterRequest $request)
