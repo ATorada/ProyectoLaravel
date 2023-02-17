@@ -5,7 +5,7 @@
 @section('content')
     <div class="content">
         @if (isset($error))
-        <span class="error">{{ $error }}</span>
+            <span class="error">{{ $error }}</span>
         @endif
         <h1>Iniciar sesión</h1>
         <form action="{{ route('login') }}" method="POST">

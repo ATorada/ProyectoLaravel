@@ -103,7 +103,7 @@ nav a:link,
     opacity: 0.8;
 }
 
-.user a{
+.user a {
     color: #cff5ff !important;
 }
 
@@ -189,7 +189,8 @@ nav a:link,
     background-color: rgba(255, 255, 255, 0.192);
 }
 
-.content .destacado, .content nav a {
+.content .destacado,
+.content nav a {
     text-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
     opacity: 1;
 }
@@ -213,7 +214,8 @@ a:active {
     margin-top: 20px;
 }
 
-.botones a, .botones input {
+.botones a,
+.botones input {
     margin-right: 10px;
 }
 
@@ -237,7 +239,8 @@ a:active {
     transform: scale(1.1);
 }
 
-.mensajes ul, .usuarios ul {
+.mensajes ul,
+.usuarios ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -271,7 +274,6 @@ a:active {
     margin-bottom: 20px;
     box-shadow: 0 0 10px #ddccec8a, 0 0 20px #ddccec8a, 0 0 30px #ddccec8a;
 }
-
 
 /* Formulario */
 
@@ -318,7 +320,8 @@ form {
 }
 
 input,
-textarea, .boton {
+textarea,
+.boton {
     font-family: "Archivo", sans-serif;
     margin: 10px 0;
     padding: 10px;
@@ -335,7 +338,8 @@ textarea {
     min-height: 100px;
 }
 
-input[type="submit"], .boton {
+input[type="submit"],
+.boton {
     background: linear-gradient(to right, #dbaeff, #d096ff);
     width: fit-content;
     cursor: pointer;
@@ -347,15 +351,18 @@ input[type="submit"]:not(.botones input) {
     padding: 10px;
 }
 
-input[type="submit"]:hover, .boton {
+input[type="submit"]:hover,
+.boton {
     background: linear-gradient(to right, #d096ff, #dbaeff);
 }
 
-input[type="submit"]:active, .boton {
+input[type="submit"]:active,
+.boton {
     background: linear-gradient(to right, #dbaeff, #d096ff);
 }
 
-input[type="submit"]:focus, .boton {
+input[type="submit"]:focus,
+.boton {
     outline: none;
 }
 
@@ -375,7 +382,8 @@ select {
     margin-bottom: 10px;
 }
 
-.content a, .content nav span {
+.content a,
+.content nav span {
     text-shadow: none;
     opacity: 0.5;
 }

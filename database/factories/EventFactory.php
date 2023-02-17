@@ -17,17 +17,6 @@ class EventFactory extends Factory
      */
     public function definition()
     {
-        /*
-            $table->id();
-            $table->string('name', 15);
-            $table->text('description');
-            $table->boolean('visibility')->default(0);
-            $table->date('date')->nullable();
-            $table->time('hour')->nullable();
-            $table->text('location')->nullable();
-            $table->text('tags')->nullable();
-            $table->timestamps();
-        */
         return [
             'name' => fake()->text(15),
             'slug' => Str::slug(fake()->text(15)),

@@ -16,11 +16,11 @@
             @endif
             <li>
                 @if (!$message->readed)
-                <a href="{{ route('messages.show', $message) }}" class="destacado">
-                @else
-                <a href="{{ route('messages.show', $message) }}">
+                    <a href="{{ route('messages.show', $message) }}" class="destacado">
+                    @else
+                        <a href="{{ route('messages.show', $message) }}">
                 @endif
-                    {{ $message->name}} <br> {{$message->subject }}
+                {{ $message->name }} <br> {{ $message->subject }}
                 </a>
             </li>
             @if ($loop->last)

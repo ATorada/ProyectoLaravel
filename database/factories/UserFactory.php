@@ -17,18 +17,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-                /*
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
-            $table->enum('role', ['member', 'admin'])->default('member');
-            $table->date('birthday')->nullable();
-            $table->string('twitter', 100)->nullable();
-            $table->string('twitch', 100)->nullable();
-            $table->string('instagram', 100)->nullable();
-        */
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),

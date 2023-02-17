@@ -21,33 +21,32 @@
                     {{ $event->name }}
                 @endauth
                 @if ($event->tags)
-                <p>Tags: {{ $event->tags }}</p>
+                    <p>Tags: {{ $event->tags }}</p>
                 @endif
                 @auth
-                <div class="botones">
-                    @if (auth()->user()->role == 'admin')
+                    <div class="botones">
+                        @if (auth()->user()->role == 'admin')
+                            <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>
 
-                        <a class="boton" href="{{ route('events.edit', $event) }}">Editar</a>
-
-                        <form action="{{ route('events.destroy', $event) }}" method="POST">
-                            @csrf
-                            @method ('DELETE')
-                            <input type="submit" class="botonRojo" value="Eliminar">
-                        </form>
-                    @endif
-                    @if ($event->users->contains(auth()->user()))
-                        <form action="{{ route('events.leave', ["event" => $event, "ruta" => 'index']) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" class="botonRojo" value="Borrarse">
-                        </form>
-                    @else
-                        <form action="{{ route('events.join', ["event" => $event, "ruta" => 'index']) }}" method="POST">
-                            @csrf
-                            <input type="submit"  class="botonVerde" value="Unirse">
-                        </form>
-                    @endif
-                </div>
+                            <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                @csrf
+                                @method ('DELETE')
+                                <input type="submit" class="botonRojo" value="Eliminar">
+                            </form>
+                        @endif
+                        @if ($event->users->contains(auth()->user()))
+                            <form action="{{ route('events.leave', ['event' => $event, 'ruta' => 'index']) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="botonRojo" value="Borrarse">
+                            </form>
+                        @else
+                            <form action="{{ route('events.join', ['event' => $event, 'ruta' => 'index']) }}" method="POST">
+                                @csrf
+                                <input type="submit" class="botonVerde" value="Unirse">
+                            </form>
+                        @endif
+                    </div>
                 @endauth
             </li>
             @if ($loop->last)

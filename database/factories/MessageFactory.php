@@ -17,15 +17,6 @@ class MessageFactory extends Factory
      */
     public function definition()
     {
-        /*
-            $table->id();
-            $table->string('name', 15);
-            $table->string('email');
-            $table->string('subject', 100);
-            $table->text('text');
-            $table->boolean('readed')->default(0);
-            $table->timestamps();
-        */
         return [
             'name' => fake()->text(15),
             'email' => fake()->unique()->safeEmail(),

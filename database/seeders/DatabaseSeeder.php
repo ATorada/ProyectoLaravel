@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             $table->string('instagram', 100)->nullable();
         */
 
-/*         DB::table('users')->insert([
+        /*         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             $table->timestamps();
         */
 
-/*         DB::table('events')->insert([
+        /*         DB::table('events')->insert([
             'name' => Str::random(10),
             'description' => Str::random(10),
             'visibility' => 1,
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
             $table->timestamps();
         */
 
-/*         DB::table('messages')->insert([
+        /*         DB::table('messages')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'subject' => Str::random(10),
@@ -95,6 +95,5 @@ class DatabaseSeeder extends Seeder
         ]); */
 
         Message::factory(10)->create();
-
     }
 }

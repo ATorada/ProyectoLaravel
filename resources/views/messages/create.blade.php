@@ -6,9 +6,9 @@
 
     <div class="content">
         @if (session()->has('success'))
-        <div class="success">
-            {{ session('success') }}
-        </div>
+            <div class="success">
+                {{ session('success') }}
+            </div>
         @endif
         <h1>Contacto</h1>
         <form action="{{ route('messages.store') }}" method="POST">

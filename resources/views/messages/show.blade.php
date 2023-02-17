@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Mensaje '.$message->id)
+@section('title', 'Mensaje ' . $message->id)
 
 @section('content')
     <div class="content">
@@ -10,7 +10,7 @@
         <p>Mensaje: {{ $message->text }}</p>
         <p>Enviado: {{ $message->created_at->format('d/m/Y') }}</p>
 
-        <form  action="{{ route('messages.destroy', $message) }}" method="POST">
+        <form action="{{ route('messages.destroy', $message) }}" method="POST">
             @csrf
             @method('DELETE')
             <input class="botonRojo" type="submit" value="Eliminar">
