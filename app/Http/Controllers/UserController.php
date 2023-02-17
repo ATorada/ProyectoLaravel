@@ -90,7 +90,7 @@ class UserController extends Controller
     /**
      * Actualiza el usuario especificado
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\EditUserRequest  $request
      * @param User  $user
      * @return \Illuminate\Http\Response
      */
