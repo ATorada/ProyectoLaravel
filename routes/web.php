@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StaticController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -28,23 +29,11 @@ Route::get('/where', function () {
     return view('where');
 })->name('where');
 
-//Cookie settings, cookie policy, privacy policy y terms
-Route::get('/cookie-settings', function () {
-    return view('static.cookie_settings');
-})->name('cookie-settings');
-
-Route::get('/cookie-policy', function () {
-    return view('static.cookie_policy');
-})->name('cookie-policy');
-
-Route::get('/privacy-policy', function () {
-    return view('static.privacy_policy');
-})->name('privacy-policy');
-
-Route::get('/terms', function () {
-    return view('static.terms');
-})->name('terms');
-
+//~~Static routes~~
+Route::get('/terms', [StaticController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [StaticController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/cookie-policy', [StaticController::class, 'cookiePolicy'])->name('cookie-policy');
+Route::get('/cookie-settings', [StaticController::class, 'cookieSettings'])->name('cookie-settings');
 
 //Auth routes
 Route::get('/register', [LoginController::class, 'registerForm'])->name('registerForm');
