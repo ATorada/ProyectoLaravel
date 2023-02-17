@@ -18,7 +18,13 @@ class LoginController extends Controller
      */
     public function registerForm()
     {
-        return view('auth.register');
+        //Si el usuario está autenticado, redirige a la vista index
+        if (Auth::check()) {
+            return redirect()->route('index');
+        } else {
+            //Si no está autenticado, devuelve la vista auth.register
+            return view('auth.register');
+        }
     }
 
     /**
@@ -28,7 +34,13 @@ class LoginController extends Controller
      */
     public function loginForm()
     {
-        return view('auth.login');
+        //Si el usuario está autenticado, redirige a la vista index
+        if (Auth::check()) {
+            return redirect()->route('index');
+        } else {
+            //Si no está autenticado, devuelve la vista auth.login
+            return view('auth.login');
+        }
     }
 
     /**
