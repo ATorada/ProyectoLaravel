@@ -47,7 +47,7 @@ class EventController extends Controller
     /**
      * Crea un nuevo evento
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\EventRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(EventRequest $request)
@@ -113,7 +113,7 @@ class EventController extends Controller
     /**
      * Actualiza el evento
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\EventRequest  $request
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
