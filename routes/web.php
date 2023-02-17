@@ -69,7 +69,7 @@ Route::resource('events', EventController::class)->only(['index'])
 Route::resource('events', EventController::class)->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])->middleware('auth')
     ->parameters(['event' => 'slug'])
     ->missing(function () {
-        return Redirect::route('index');
+        return Redirect::route('events.index');
     });
 
 //~~Resource routes "Messages"~~
