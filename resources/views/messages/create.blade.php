@@ -14,7 +14,7 @@
         <form action="{{ route('messages.store') }}" method="POST">
             @csrf
             @auth
-                <input type="text" name="name" placeholder="Nombre..." value="{{ auth()->user()->name }}">
+                <input type="text" name="name" placeholder="Nombre..." value="{{ old('name', auth()->user()->name) }}">
             @else
                 <input type="text" name="name" placeholder="Nombre..." value="{{ old('name') }}">
             @endauth
@@ -22,7 +22,7 @@
                 <span class="error">{{ $message }}</span>
             @enderror
             @auth
-                <input type="email" name="email" placeholder="Email..." value="{{ auth()->user()->email }}">
+                <input type="email" name="email" placeholder="Email..." value="{{ old('email', auth()->user()->email) }}">
             @else
                 <input type="email" name="email" placeholder="Email..." value="{{ old('email') }}">
             @endauth

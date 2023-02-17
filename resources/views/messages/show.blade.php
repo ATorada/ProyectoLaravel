@@ -6,6 +6,7 @@
     <div class="content">
         <h1>Mensaje {{ $message->id }}</h1>
         <p>De: {{ $message->email }}</p>
+        <p>Nombre: {{ $message->name }}</p>
         <p>Asunto: {{ $message->subject }}</p>
         <p>Mensaje: {{ $message->text }}</p>
         <p>Enviado: {{ $message->created_at->format('d/m/Y') }}</p>
