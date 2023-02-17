@@ -29,6 +29,8 @@ class EditUserRequest extends FormRequest
             'twitch' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
             'twitter' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
             'instagram' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9_.]+$/',
+            'birthday' => 'nullable|date',
+            'imagen' => 'nullable|image|max:2048',
         ];
     }
 
@@ -41,6 +43,8 @@ class EditUserRequest extends FormRequest
             'twitch.regex' => 'El nombre de usuario de Twitch no es válido',
             'twitter.regex' => 'El nombre de usuario de Twitter no es válido',
             'instagram.regex' => 'El nombre de usuario de Instagram no es válido',
+            'imagen.image' => 'El archivo subido no es una imagen',
+            'imagen.max' => 'La imagen no puede pesar más de 2MB',
         ];
     }
 }

@@ -118,6 +118,12 @@ class UserController extends Controller
             $user->twitter = $request->twitter;
             $user->instagram = $request->instagram;
 
+            if($request->birthday){
+                $user->birthday = $request->birthday;
+            } else {
+                $user->birthday = null;
+            }
+
             //Guarda los cambios
             $user->save();
 

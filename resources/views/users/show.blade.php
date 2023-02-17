@@ -14,6 +14,9 @@
         @endif
         <h1>{{ $user->name }}</h1>
         <p>Usuario desde: {{ $user->created_at->format('d/m/Y') }}</p>
+        @if ($user->birthday)
+            <p>Fecha de nacimiento: {{ $user->birthday }}</p>
+        @endif
         @if ($user->twitch)
             <a class="redSocial" href="https://www.twitch.tv/{{ $user->twitch }}"><img src="{{ asset('img/twitch.png') }}"
                     alt="Twitch"></a>

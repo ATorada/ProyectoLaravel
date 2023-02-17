@@ -18,6 +18,11 @@
             @error('name')
                 <span class="error">{{ $message }}</span>
             @enderror
+            <label for="birthday">Fecha de nacimiento</label>
+            <input type="date" name="birthday" id="birthday" value="{{ old('birthday', $user->birthday) }}">
+            @error('birthday')
+                <span class="error">{{ $message }}</span>
+            @enderror
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
             @error('password')
