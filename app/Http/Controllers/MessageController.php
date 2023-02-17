@@ -42,7 +42,7 @@ class MessageController extends Controller
     /**
      * Crea un nuevo mensaje
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\MessageRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(MessageRequest $request)
