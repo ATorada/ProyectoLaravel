@@ -136,7 +136,7 @@ class UserController extends Controller
     }
 
     /**
-     * Elimina el usuario especificado (No se usa)
+     * Elimina el usuario especificado
      *
      * @param  User  $user
      * @return \Illuminate\Http\Response
