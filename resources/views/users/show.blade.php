@@ -33,6 +33,11 @@
             @if (auth()->user()->id == $user->id)
                 <br>
                 <a class="boton" href="{{ route('users.edit', $user) }}">Editar perfil</a>
+                <form action="{{ route('users.destroy', $user) }}" method="POST">
+                    @csrf
+                    @method ('DELETE')
+                    <input type="submit" class="botonRojo" value="Eliminar perfil">
+                </form>
             @endif
         @endauth
     </div>

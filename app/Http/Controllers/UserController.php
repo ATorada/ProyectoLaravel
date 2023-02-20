@@ -145,6 +145,8 @@ class UserController extends Controller
     {
         //Comprueba si el usuario es el mismo que el que está logueado
         if (auth()->user()->id == $user->id) {
+            //Saca al usuario de todos los eventos
+            $user->events()->detach();
             //Elimina el usuario
             $user->delete();
             //Cierra la sesión
